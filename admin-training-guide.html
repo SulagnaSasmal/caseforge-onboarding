@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Training Guide – CaseForge Onboarding</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <script>
+    (function () {
+      var t = localStorage.getItem('cf-theme') || 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <style>
+    .module-header { display: flex; align-items: center; gap: 0.5rem; }
+    .module-badge {
+      display: inline-block; padding: 0.2rem 0.6rem; border-radius: 999px;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em;
+      background: var(--accent-light); color: var(--accent);
+    }
+    .duration-tag {
+      font-size: 0.78rem; color: var(--text-muted);
+      background: var(--bg-secondary); padding: 0.15rem 0.55rem; border-radius: 4px;
+    }
+    .qr-card {
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: 8px; padding: 1.25rem 1.5rem; margin-top: 1.5rem;
+    }
+    .qr-card h3 { margin-top: 0; font-size: 1rem; }
+    .step-list { counter-reset: step; }
+    .step-list li { counter-increment: step; padding-left: 2rem; position: relative; margin-bottom: 0.4rem; }
+    .step-list li::before {
+      content: counter(step);
+      position: absolute; left: 0;
+      width: 1.4rem; height: 1.4rem; border-radius: 50%;
+      background: var(--accent); color: white;
+      font-size: 0.72rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">CF</span>
+        <span class="logo-text">CaseForge <span class="logo-sub">Onboarding</span></span>
+        <span class="version-badge">v3.x</span>
+      </a>
+      <nav class="header-nav">
+        <a href="implementation-guide.html">Implementation</a>
+        <a href="go-live-checklist.html">Go-Live</a>
+        <a href="admin-training-guide.html" class="active">Admin Training</a>
+        <a href="integration-checklist.html">Integrations</a>
+        <a href="csm-playbook.html">CSM Playbook</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span class="theme-icon">🌙</span>
+        </button>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-layout">
+    <aside class="sidebar" id="sidebar">
+      <nav class="sidebar-nav">
+        <div class="sidebar-section">
+          <div class="sidebar-section-title">30-Day Program</div>
+          <a href="index.html" class="sidebar-link">Overview</a>
+          <a href="implementation-guide.html" class="sidebar-link">Implementation Guide</a>
+          <a href="integration-checklist.html" class="sidebar-link">Integration Checklist</a>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-section-title">Training &amp; Go-Live</div>
+          <a href="admin-training-guide.html" class="sidebar-link active">Admin Training Guide</a>
+          <a href="go-live-checklist.html" class="sidebar-link">Go-Live Checklist</a>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-section-title">Success Resources</div>
+          <a href="csm-playbook.html" class="sidebar-link">CSM Playbook</a>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-section-title">On This Page</div>
+          <a href="#module1" class="sidebar-link sidebar-link-sm">Module 1: Admin Console</a>
+          <a href="#module2" class="sidebar-link sidebar-link-sm">Module 2: User Management</a>
+          <a href="#module3" class="sidebar-link sidebar-link-sm">Module 3: Workflow Management</a>
+          <a href="#module4" class="sidebar-link sidebar-link-sm">Module 4: Notification Rules</a>
+          <a href="#module5" class="sidebar-link sidebar-link-sm">Module 5: Reports</a>
+          <a href="#module6" class="sidebar-link sidebar-link-sm">Module 6: Diagnostics</a>
+          <a href="#assessment" class="sidebar-link sidebar-link-sm">Assessment</a>
+          <a href="#qr-card" class="sidebar-link sidebar-link-sm">Quick Reference</a>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="page-meta">
+        <span class="page-meta-tag">Admin Training</span>
+        <span class="page-meta-tag">3 hours total</span>
+        <span class="page-meta-tag">Workspace Admin role required</span>
+      </div>
+      <h1>Admin Training Guide</h1>
+      <p class="lead">Six self-paced modules that prepare a Workspace Admin to configure and maintain CaseForge independently. Complete these modules before go-live. Each module includes a duration target and a set of practise tasks.</p>
+
+      <div class="callout callout-tip">
+        <strong>Before you start:</strong> You need Workspace Admin access to a CaseForge <em>staging</em> tenant to complete the practise tasks. Do not practise on the production tenant. If you don't have staging access, ask your CaseForge IE.
+      </div>
+
+      <!-- Module 1 -->
+      <section id="module1">
+        <h2 class="module-header">
+          <span class="module-badge">Module 1</span>
+          Admin Console
+          <span class="duration-tag">⏱ 20 min</span>
+        </h2>
+        <p><strong>Goal:</strong> Navigate the admin console and locate each configuration section.</p>
+        <p>The admin console is accessible from the user menu at the top right of the CaseForge interface. It is visible only to users with the <strong>Workspace Admin</strong> role.</p>
+
+        <table>
+          <thead><tr><th>Section</th><th>What you configure here</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Users</strong></td><td>Invite users, assign roles, manage groups, deactivate accounts</td></tr>
+            <tr><td><strong>Workflows</strong></td><td>Create and edit case types, stages, and stage transition rules</td></tr>
+            <tr><td><strong>Notifications</strong></td><td>Create and manage email notification rules</td></tr>
+            <tr><td><strong>Integrations</strong></td><td>Configure and monitor third-party integrations</td></tr>
+            <tr><td><strong>Reports</strong></td><td>Run, schedule, and create custom reports</td></tr>
+            <tr><td><strong>Audit Log</strong></td><td>View a full record of all configuration and case changes</td></tr>
+            <tr><td><strong>Settings</strong></td><td>Workspace-level settings: branding, email, storage limits, SSO configuration</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout callout-tip">
+          <strong>Practise task:</strong> Log in to your staging tenant and navigate to <strong>Admin Console → Audit Log</strong>. Find an entry from the past 24 hours and identify the user who made the change and what they changed.
+        </div>
+      </section>
+
+      <!-- Module 2 -->
+      <section id="module2">
+        <h2 class="module-header">
+          <span class="module-badge">Module 2</span>
+          User Management
+          <span class="duration-tag">⏱ 30 min</span>
+        </h2>
+        <p><strong>Goal:</strong> Invite users, assign roles, manage groups, and handle offboarding.</p>
+
+        <h3>Roles</h3>
+        <table>
+          <thead><tr><th>Role</th><th>What they can do</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Workspace Admin</strong></td><td>Full access to admin console; can configure all settings</td></tr>
+            <tr><td><strong>Supervisor</strong></td><td>Can view and reassign all cases in their groups; can run reports</td></tr>
+            <tr><td><strong>Agent</strong></td><td>Can create cases and work cases they are assigned to, in their groups</td></tr>
+            <tr><td><strong>Read-only</strong></td><td>Can view cases in their groups but cannot create or modify them</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Inviting a user</h3>
+        <ol class="step-list">
+          <li>Navigate to <strong>Admin Console → Users → Invite user</strong>.</li>
+          <li>Enter the user's email address.</li>
+          <li>Select their role from the dropdown.</li>
+          <li>Assign the user to one or more groups. (A user with no group assignment cannot see any cases.)</li>
+          <li>Click <strong>Send invite</strong>. The user receives an email with a link to activate their account.</li>
+        </ol>
+
+        <div class="callout callout-tip">
+          <strong>Note:</strong> If your workspace uses SSO, users authenticate via your identity provider. They still need to be invited to CaseForge — the invitation creates their profile and group assignment, even though they won't set a password.
+        </div>
+
+        <h3>Changing a user's role</h3>
+        <ol class="step-list">
+          <li>Navigate to <strong>Admin Console → Users → [User name]</strong>.</li>
+          <li>Click the <strong>Role</strong> dropdown.</li>
+          <li>Select the new role.</li>
+          <li>The change takes effect immediately on the user's next page load.</li>
+        </ol>
+
+        <h3>Deactivating a user</h3>
+        <p>When a user leaves or no longer needs access:</p>
+        <ol class="step-list">
+          <li>Navigate to <strong>Admin Console → Users → [User name]</strong>.</li>
+          <li>Click <strong>Deactivate account</strong>.</li>
+          <li>Confirm. The user is immediately logged out and cannot log in again.</li>
+          <li>Their cases remain in the system and retain their history. Reassign open cases to an active user.</li>
+        </ol>
+        <div class="callout callout-warning">
+          <strong>Do not delete user accounts.</strong> Deletion removes the user from audit log entries, which breaks compliance records. Always deactivate instead of delete.
+        </div>
+
+        <h3>Bulk user import</h3>
+        <p>For initial go-live or large user cohorts, use the bulk import instead of inviting one by one:</p>
+        <ol class="step-list">
+          <li>Download the import template from <strong>Admin Console → Users → Import users → Download template</strong>.</li>
+          <li>Fill in the CSV: one row per user with columns for email, role, and group names. Group names must exactly match existing group names in your workspace.</li>
+          <li>Upload the completed CSV.</li>
+          <li>Review the preview for errors (missing emails, unrecognised group names).</li>
+          <li>Confirm the import. Invitation emails are sent in bulk.</li>
+        </ol>
+
+        <div class="callout callout-tip">
+          <strong>Practise tasks:</strong>
+          <ul>
+            <li>Invite a test user with the Agent role and assign them to a group.</li>
+            <li>Change that user's role to Read-only.</li>
+            <li>Deactivate the test user.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Module 3 -->
+      <section id="module3">
+        <h2 class="module-header">
+          <span class="module-badge">Module 3</span>
+          Workflow Management
+          <span class="duration-tag">⏱ 45 min</span>
+        </h2>
+        <p><strong>Goal:</strong> Create and modify case types, configure stages and transitions, and publish workflow changes safely.</p>
+
+        <h3>Case types and stages</h3>
+        <p>Every case in CaseForge belongs to a <strong>case type</strong>. The case type defines:</p>
+        <ul>
+          <li>The stages the case moves through (for example: New → In Review → Resolved → Closed)</li>
+          <li>Required fields at each stage transition</li>
+          <li>Which user groups can create cases of this type</li>
+          <li>SLA rules (if configured)</li>
+        </ul>
+
+        <h3>Creating a case type</h3>
+        <ol class="step-list">
+          <li>Navigate to <strong>Admin Console → Workflows → New case type</strong>.</li>
+          <li>Name the case type. The name appears in the case creation form and all reports.</li>
+          <li>Add stages using the <strong>+ Add stage</strong> button. Drag to reorder.</li>
+          <li>For each stage, set the stage properties in the right panel: stage name, assigned group, and whether the stage is a terminal state (case is closed when it enters this stage).</li>
+          <li>Click <strong>Save draft</strong>. The case type is saved but not yet active.</li>
+        </ol>
+
+        <h3>Configuring stage transitions</h3>
+        <p>A transition is the move from one stage to the next. You can require a field to be filled in before a transition is allowed.</p>
+        <ol class="step-list">
+          <li>Click a stage in the workflow editor.</li>
+          <li>In the right panel, click <strong>Transitions out</strong>.</li>
+          <li>For each outgoing transition, click <strong>+ Add required field</strong>.</li>
+          <li>Select the field from the dropdown. The field must exist in the case type's field configuration.</li>
+          <li>Save the transition rule.</li>
+        </ol>
+        <div class="callout callout-tip">
+          Keep required fields minimal. Every required field is a friction point for the agent. Only require fields that are genuinely necessary for the workflow to function — not fields that would merely be nice to have.
+        </div>
+
+        <h3>Versioning and publishing</h3>
+        <p>Workflow changes are versioned. When you edit a case type, you are editing a <strong>draft version</strong>. The live cases on the production tenant continue using the <strong>published version</strong> until you publish the draft.</p>
+        <ul>
+          <li><strong>Save draft</strong> — saves your changes without affecting live cases.</li>
+          <li><strong>Publish workflow</strong> — makes the draft the active version. Cases currently open will use the new workflow for any future transitions.</li>
+          <li><strong>View history</strong> — shows all published versions and who published each one. You cannot revert to a previous version automatically — if a publish causes problems, you must reconfigure the draft to match the previous state and publish again.</li>
+        </ul>
+        <div class="callout callout-warning">
+          Always test workflow changes in the staging tenant before publishing to production. A misconfigured required field or missing transition can prevent agents from advancing cases.
+        </div>
+
+        <div class="callout callout-tip">
+          <strong>Practise tasks:</strong>
+          <ul>
+            <li>Create a case type called "Training Case" with three stages: Open, In Review, Closed.</li>
+            <li>Add a required field to the transition from In Review to Closed.</li>
+            <li>Publish the workflow.</li>
+            <li>Create a test case and verify that the required field is enforced when advancing from In Review to Closed.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Module 4 -->
+      <section id="module4">
+        <h2 class="module-header">
+          <span class="module-badge">Module 4</span>
+          Notification Rules
+          <span class="duration-tag">⏱ 30 min</span>
+        </h2>
+        <p><strong>Goal:</strong> Create, manage, and test email notification rules.</p>
+
+        <h3>How notification rules work</h3>
+        <p>A notification rule has three components:</p>
+        <ul>
+          <li>A <strong>trigger event</strong> (for example: case created, case assigned, case escalated, stage transition, comment added)</li>
+          <li>A <strong>recipient filter</strong> (for example: assigned agent, case creator, all members of a group, a specific user)</li>
+          <li>A <strong>message template</strong> (subject line and body, with field substitution variables)</li>
+        </ul>
+
+        <h3>Trigger events</h3>
+        <table>
+          <thead><tr><th>Event</th><th>When it fires</th></tr></thead>
+          <tbody>
+            <tr><td>Case created</td><td>Any time a new case is submitted</td></tr>
+            <tr><td>Case assigned</td><td>When a case is assigned (or reassigned) to a user</td></tr>
+            <tr><td>Case escalated</td><td>When a case's priority is raised to Escalated</td></tr>
+            <tr><td>Stage transition</td><td>When a case moves from one stage to another (configurable per transition)</td></tr>
+            <tr><td>Comment added</td><td>When a comment is posted on a case</td></tr>
+            <tr><td>SLA breach</td><td>When a case's SLA target is missed (requires SLA rules configured)</td></tr>
+            <tr><td>Due date approaching</td><td>N days before a case's due date (configurable threshold)</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Viewing existing rules</h3>
+        <p>Navigate to <strong>Admin Console → Notifications</strong>. All active notification rules are listed here. Enabled rules have a green indicator; disabled rules are grayed out.</p>
+        <p>Click any rule to view or edit it. The email preview shows how the notification looks with sample data substituted.</p>
+
+        <h3>Creating a notification rule</h3>
+        <ol class="step-list">
+          <li>Click <strong>New rule</strong>.</li>
+          <li>Select the trigger event from the dropdown.</li>
+          <li>Set the recipient filter. For most events, start with the <strong>Assignee</strong> recipient — add more recipients only if there's a documented business need.</li>
+          <li>Edit the message template. Field substitution variables are listed in the right panel — click any variable to insert it into the template.</li>
+          <li>Toggle the rule on.</li>
+          <li>Click <strong>Save</strong>.</li>
+        </ol>
+        <div class="callout callout-tip">
+          Too many notifications reduce the signal-to-noise ratio and lead to users ignoring them. Err on the side of fewer rules.
+        </div>
+
+        <h3>Testing a notification rule</h3>
+        <p>After saving a new rule, test it before go-live:</p>
+        <ol class="step-list">
+          <li>Create a test case in the staging environment.</li>
+          <li>Trigger the event the rule responds to.</li>
+          <li>Check that the notification email arrives within two minutes.</li>
+          <li>Review the email content — confirm that substitution variables resolved correctly (no visible <code>&#123;&#123;variable_name&#125;&#125;</code> placeholders in the received email).</li>
+        </ol>
+        <p>If the notification does not arrive, check:</p>
+        <ul>
+          <li>The rule is enabled (green indicator in the rule list)</li>
+          <li>The recipient user has a valid email address in their CaseForge profile</li>
+          <li>Email delivery is functioning — send a test email from <strong>Settings → Email → Test delivery</strong></li>
+        </ul>
+
+        <div class="callout callout-tip">
+          <strong>Practise task:</strong> Create a notification rule that emails the Assignee when a case is escalated. Test it by escalating a case in staging.
+        </div>
+      </section>
+
+      <!-- Module 5 -->
+      <section id="module5">
+        <h2 class="module-header">
+          <span class="module-badge">Module 5</span>
+          Reports
+          <span class="duration-tag">⏱ 30 min</span>
+        </h2>
+        <p><strong>Goal:</strong> Generate and schedule operational reports for common management use cases.</p>
+
+        <h3>Standard reports</h3>
+        <p>Navigate to <strong>Admin Console → Reports</strong> to see the full report library.</p>
+        <table>
+          <thead><tr><th>Report</th><th>What it shows</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Case volume</strong></td><td>Cases created, closed, and in progress per time period; filterable by case type and group</td></tr>
+            <tr><td><strong>Resolution time</strong></td><td>Average and median time from case creation to closure, by case type and assignee</td></tr>
+            <tr><td><strong>Stage aging</strong></td><td>Cases that have been in a given stage longer than a threshold; used to identify stuck cases</td></tr>
+            <tr><td><strong>User activity</strong></td><td>Actions taken per user over a time period — useful for capacity planning</td></tr>
+            <tr><td><strong>SLA compliance</strong></td><td>Cases resolved within defined SLA targets vs. those that breached; requires SLA rules configured</td></tr>
+          </tbody>
+        </table>
+        <p>To run a report, click it, set the date range and any filters, and click <strong>Generate</strong>. Reports render in-browser and can be exported as CSV or PDF.</p>
+
+        <h3>Scheduling a report</h3>
+        <ol class="step-list">
+          <li>Open the report.</li>
+          <li>Click <strong>Schedule</strong>.</li>
+          <li>Set the frequency (daily, weekly, monthly).</li>
+          <li>Select the delivery time and recipients.</li>
+          <li>Click <strong>Save schedule</strong>.</li>
+        </ol>
+        <p>Scheduled reports are sent as PDF attachments. Recipients do not need a CaseForge account to receive them.</p>
+
+        <h3>Creating a custom report</h3>
+        <ol class="step-list">
+          <li>Navigate to <strong>Admin Console → Reports → New report</strong>.</li>
+          <li>Select the primary data object (Cases, Users, or Audit events).</li>
+          <li>Choose the columns using the field picker.</li>
+          <li>Apply filters to narrow the data set.</li>
+          <li>Preview the report.</li>
+          <li>Save with a name and description.</li>
+        </ol>
+
+        <div class="callout callout-tip">
+          <strong>Practise tasks:</strong>
+          <ul>
+            <li>Run the Stage Aging report for the past 30 days.</li>
+            <li>Schedule the Case Volume report to deliver weekly every Monday morning.</li>
+            <li>Create a custom report that shows all cases in the "In Review" stage for a specific group.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Module 6 -->
+      <section id="module6">
+        <h2 class="module-header">
+          <span class="module-badge">Module 6</span>
+          Common Issues &amp; Diagnostics
+          <span class="duration-tag">⏱ 30 min</span>
+        </h2>
+        <p><strong>Goal:</strong> Diagnose and resolve the ten most common support issues without escalating to CaseForge support.</p>
+
+        <h3>1. User cannot log in via SSO</h3>
+        <ul>
+          <li>Confirm the user is assigned to the CaseForge application in the IdP.</li>
+          <li>Confirm the user's email in the IdP matches their CaseForge profile email (case-sensitive for some IdPs).</li>
+          <li>Check <strong>Admin Console → Audit Log</strong> for authentication failure entries.</li>
+          <li>If the Audit Log shows no entry at all, the issue is in the IdP — the request is not reaching CaseForge.</li>
+        </ul>
+
+        <h3>2. User not receiving notifications</h3>
+        <ul>
+          <li>Confirm the notification rule is enabled (green indicator).</li>
+          <li>Confirm the user's email address in their CaseForge profile is correct.</li>
+          <li>Confirm the notification rule's recipient filter matches the user's role or group.</li>
+          <li>Ask the user to check their spam folder and add <code>noreply@[tenant].caseforge.io</code> to safe senders.</li>
+          <li>Send a test email from <strong>Settings → Email → Test delivery</strong>.</li>
+        </ul>
+
+        <h3>3. User cannot see a case</h3>
+        <p>Cases are visible only to users whose group matches the case's access group, plus supervisors and admins.</p>
+        <ul>
+          <li>Check the case's access group in the case Details tab.</li>
+          <li>Check the user's group membership in <strong>Admin Console → Users → [User] → Groups</strong>.</li>
+          <li>Agents can only see cases they are assigned to or cases in their groups. Supervisors see all cases in their groups.</li>
+        </ul>
+
+        <h3>4. Workflow stage not advancing</h3>
+        <ul>
+          <li>Open the case — check the stage transition validation message for the specific required field that is missing.</li>
+          <li>Confirm the user's role has transition permissions for this stage (<strong>Admin Console → Workflows → [Case type] → [Stage] → transitions</strong>).</li>
+          <li>If the advance button is grayed out with no error, check the <strong>Tasks</strong> tab for an open task that must be completed first.</li>
+        </ul>
+
+        <h3>5. Integration stopped working</h3>
+        <ol class="step-list">
+          <li>Navigate to <strong>Admin Console → Integrations → [Integration name]</strong>.</li>
+          <li>Click <strong>Connection health</strong> to see the last successful sync and any error messages.</li>
+          <li>Most common cause: expired credential. For OAuth integrations, click <strong>Reconnect</strong>. For API token integrations, ask the IT admin to generate a new token.</li>
+          <li>If the health check shows a network error, escalate to the IT admin — a firewall change may be blocking the integration endpoint.</li>
+        </ol>
+
+        <h3>6. Attachment upload failing</h3>
+        <ul>
+          <li>Maximum attachment size is 50 MB per file.</li>
+          <li>Supported file types are configured in <strong>Admin Console → Settings → Allowed file types</strong>. Add the relevant type if needed.</li>
+          <li>If attachments "disappear" after upload, check <strong>Admin Console → Integrations</strong> for document storage errors.</li>
+        </ul>
+
+        <h3>7. Report showing no data</h3>
+        <ul>
+          <li>Confirm the date range covers a period when cases existed. A common mistake is "last 7 days" immediately after go-live.</li>
+          <li>Check that case type and group filters are not over-scoping the query.</li>
+          <li>For custom reports, check that filter conditions are correct — an AND filter where OR was intended is a common cause.</li>
+        </ul>
+
+        <h3>8. Duplicate user accounts</h3>
+        <ol class="step-list">
+          <li>Identify both email addresses from the Users list.</li>
+          <li>Confirm with the user which account holds their active cases.</li>
+          <li>Reassign any open cases from the account to be deactivated.</li>
+          <li>Deactivate the unused account. Do not delete — deactivation preserves audit history.</li>
+        </ol>
+
+        <h3>9. Admin console not loading</h3>
+        <ul>
+          <li>Confirm the user has the Workspace Admin role.</li>
+          <li>Clear browser cache and retry. Try an incognito window.</li>
+          <li>If it doesn't load in any browser, check <code>status.caseforge.io</code>.</li>
+        </ul>
+
+        <h3>10. Scheduled report not delivering</h3>
+        <ul>
+          <li>Confirm the schedule is active (navigate to the report and check the <strong>Schedules</strong> tab).</li>
+          <li>Confirm the recipient email addresses are valid.</li>
+          <li>Ask recipients to check their junk folder.</li>
+          <li>Re-run the report manually. If it renders correctly, the issue is with scheduled delivery — contact CaseForge support.</li>
+        </ul>
+      </section>
+
+      <!-- Assessment -->
+      <section id="assessment">
+        <h2>Post-Training Assessment</h2>
+        <p>After completing all six modules, you should be able to complete the following tasks independently, without referring to this guide:</p>
+        <ol>
+          <li>Invite a new user, assign them to a group, and set their role to Agent</li>
+          <li>Create a new case type with three stages and one required field on the middle transition</li>
+          <li>Create a notification rule that emails the assignee when a case is escalated</li>
+          <li>Run the Stage Aging report for the past 30 days, filtered to one case type</li>
+          <li>Diagnose why a user is not receiving notifications and resolve the issue</li>
+        </ol>
+        <div class="callout callout-warning">
+          If you are not confident in any of these areas, ask your CaseForge IE to run a focused practise session before go-live.
+        </div>
+      </section>
+
+      <!-- Quick Reference -->
+      <section id="qr-card">
+        <h2>Quick Reference Card</h2>
+        <p>Save or print this section for day-to-day reference.</p>
+        <table>
+          <thead><tr><th>Task</th><th>Path in admin console</th></tr></thead>
+          <tbody>
+            <tr><td>Invite a user</td><td>Users → Invite user</td></tr>
+            <tr><td>Deactivate a user</td><td>Users → [User] → Deactivate account</td></tr>
+            <tr><td>Change a user's role</td><td>Users → [User] → Role dropdown</td></tr>
+            <tr><td>Create a workflow stage</td><td>Workflows → [Case type] → + Add stage</td></tr>
+            <tr><td>Publish a workflow change</td><td>Workflows → [Case type] → Publish workflow</td></tr>
+            <tr><td>Create a notification rule</td><td>Notifications → New rule</td></tr>
+            <tr><td>Run a report</td><td>Reports → [Report name] → Generate</td></tr>
+            <tr><td>Schedule a report</td><td>Reports → [Report name] → Schedule</td></tr>
+            <tr><td>View audit log</td><td>Audit Log</td></tr>
+            <tr><td>Test email delivery</td><td>Settings → Email → Test delivery</td></tr>
+            <tr><td>Check integration health</td><td>Integrations → [Integration name] → Connection health</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/scripts.js"></script>
+</body>
+</html>

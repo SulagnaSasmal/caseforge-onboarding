@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Implementation Guide — CaseForge Onboarding</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="assets/style.css" />
+  <script>
+    (function(){var t=localStorage.getItem('cf-theme');if(t){document.documentElement.setAttribute('data-theme',t);}else if(window.matchMedia('(prefers-color-scheme:dark)').matches){document.documentElement.setAttribute('data-theme','dark');}else{document.documentElement.setAttribute('data-theme','light');}})();
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <button class="hamburger" id="hamburger" aria-label="Open navigation">&#9776;</button>
+  <a class="site-logo" href="index.html">
+    <span class="logo-mark">CF</span>
+    <span class="logo-name">CaseForge <span class="logo-sdk">Onboarding</span></span>
+  </a>
+  <span class="header-version">3.x</span>
+  <div class="header-spacer"></div>
+  <nav class="header-links">
+    <a href="implementation-guide.html" class="active">Implementation</a>
+    <a href="integration-checklist.html">Integrations</a>
+    <a href="admin-training-guide.html">Training</a>
+    <a href="go-live-checklist.html">Go-Live</a>
+    <a href="csm-playbook.html">CSM Playbook</a>
+  </nav>
+  <div class="header-sep"></div>
+  <a class="github-btn" href="https://github.com/SulagnaSasmal/caseforge-onboarding" target="_blank" rel="noopener">
+    <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+    GitHub
+  </a>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
+</header>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-group">
+      <div class="nav-group-label">30-Day Program</div>
+      <a href="index.html" class="nav-item">Overview</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Implementation</div>
+      <a href="implementation-guide.html" class="nav-item active">Implementation Guide</a>
+      <a href="integration-checklist.html" class="nav-item">Integration Checklist</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Training</div>
+      <a href="admin-training-guide.html" class="nav-item">Admin Training Guide</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Go-Live</div>
+      <a href="go-live-checklist.html" class="nav-item">Go-Live Checklist</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Customer Success</div>
+      <a href="csm-playbook.html" class="nav-item">CSM Playbook</a>
+    </div>
+  </nav>
+
+  <main class="main">
+    <div class="content">
+
+      <div class="page-meta">Version CaseForge 3.x · Owner: Customer Success — Implementation Team · Last reviewed: March 2025</div>
+      <h1>Implementation Guide</h1>
+      <p class="lead">End-to-end implementation guide for new enterprise CaseForge customers. Covers all milestones, ownership, dependencies, and success criteria from kickoff through hypercare.</p>
+
+      <div class="callout callout-tip">The typical implementation runs <strong>seven weeks from kickoff to go-live</strong>, followed by a four-week hypercare period. Timelines vary based on integration scope, data migration volume, and SSO complexity. Your Solutions Engineer will flag deviations at kickoff.</div>
+
+      <h2>Roles and responsibilities</h2>
+      <table>
+        <thead><tr><th>Role</th><th>Responsibilities</th></tr></thead>
+        <tbody>
+          <tr><td><strong>CaseForge CSM</strong></td><td>Overall engagement ownership, stakeholder communication, escalation point</td></tr>
+          <tr><td><strong>CaseForge Implementation Engineer</strong></td><td>Technical configuration, integration setup, environment validation</td></tr>
+          <tr><td><strong>Customer Project Manager</strong></td><td>Internal coordination, scheduling, change management, sign-off on milestones</td></tr>
+          <tr><td><strong>Customer IT Administrator</strong></td><td>SSO configuration, network access, integration endpoints, directory service connection</td></tr>
+          <tr><td><strong>Customer Workspace Administrator</strong></td><td>User provisioning, workflow configuration, report setup</td></tr>
+        </tbody>
+      </table>
+      <p>The customer PM is the single point of contact for the CaseForge team throughout the implementation. Designate this person at or before kickoff.</p>
+
+      <h2>Pre-kickoff requirements</h2>
+      <p>Complete the following before the kickoff call. Gaps in these items delay the implementation by an equivalent number of business days.</p>
+      <ul class="checklist">
+        <li>Purchase order confirmed and order processing complete</li>
+        <li>Customer PM assigned and contact information provided to CaseForge CSM</li>
+        <li>IT administrator identified and available for the SSO and integration sessions</li>
+        <li>Network security review initiated (if applicable — required for customers with strict egress filtering)</li>
+        <li>CaseForge tenant provisioned (CaseForge IE confirms via email with tenant URL and initial admin credentials)</li>
+      </ul>
+
+      <h2>Phase 1: Kickoff and environment setup (Weeks 1–2)</h2>
+
+      <h3>Kickoff call</h3>
+      <p><strong>Duration:</strong> 90 minutes<br>
+      <strong>Participants:</strong> CaseForge CSM, IE, customer PM, customer IT lead, executive sponsor (optional)</p>
+      <p>The kickoff call establishes shared understanding of the implementation scope, timeline, and working model. It covers:</p>
+      <ol>
+        <li><strong>Scope confirmation</strong> — Review contracted modules, number of users, and integration list.</li>
+        <li><strong>Timeline walkthrough</strong> — Walk through this guide's milestone table and agree on target dates.</li>
+        <li><strong>Technical requirements</strong> — IE collects SSO provider, directory service type, and network architecture summary.</li>
+        <li><strong>Communication cadence</strong> — Agree on the weekly check-in format, escalation path, and ticket tracking system.</li>
+        <li><strong>Success criteria</strong> — Define what "done" means for go-live. Default criteria are in the <a href="go-live-checklist.html">Go-Live Checklist</a>.</li>
+      </ol>
+      <p><strong>Kickoff deliverable:</strong> A completed project plan with agreed milestone dates, shared with the customer PM within 24 hours of the call.</p>
+
+      <h3>Environment setup</h3>
+      <table>
+        <thead><tr><th>Task</th><th>Owner</th><th>Timeline</th></tr></thead>
+        <tbody>
+          <tr><td>Tenant DNS and SSL setup</td><td>CaseForge IE</td><td>Day 1–2 post-kickoff</td></tr>
+          <tr><td>Initial admin account creation</td><td>CaseForge IE</td><td>Day 1</td></tr>
+          <tr><td>Customer admin account activation</td><td>Customer IT admin</td><td>Within 24h of receiving invite</td></tr>
+          <tr><td>IP allowlist configuration (if required)</td><td>Customer IT admin</td><td>Day 2–3</td></tr>
+          <tr><td>SMTP relay configuration</td><td>CaseForge IE + customer IT</td><td>Day 3–5</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-success"><strong>Milestone 1 — Environment ready:</strong> The customer admin can log into the CaseForge tenant, access the admin console, and confirm email notifications are delivering.</div>
+
+      <h2>Phase 2: SSO and integrations (Weeks 3–4)</h2>
+
+      <h3>Single sign-on configuration</h3>
+      <p>CaseForge supports SAML 2.0 and OIDC for SSO. The IE leads the configuration session with the customer IT admin. Typical session length is two hours. See the <a href="integration-checklist.html">Integration Checklist</a> for the full step-by-step.</p>
+
+      <h3>SAML 2.0 attribute mapping</h3>
+      <table>
+        <thead><tr><th>CaseForge attribute</th><th>SAML assertion attribute</th></tr></thead>
+        <tbody>
+          <tr><td><code>user.email</code></td><td><code>email</code></td></tr>
+          <tr><td><code>user.firstName</code></td><td><code>givenName</code></td></tr>
+          <tr><td><code>user.lastName</code></td><td><code>surname</code></td></tr>
+          <tr><td><code>user.groups</code></td><td><code>groups</code> (multi-value)</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-warning"><strong>Note:</strong> If the customer uses a non-standard attribute name for email, confirm the mapping before the test. Authentication will fail silently if the email attribute is not mapped — it does not produce an error message in the IdP.</div>
+
+      <h3>Core integrations</h3>
+      <table>
+        <thead><tr><th>Integration</th><th>Configuration owner</th><th>Typical setup time</th></tr></thead>
+        <tbody>
+          <tr><td>Active Directory / LDAP (user sync)</td><td>Customer IT admin</td><td>2–4 hours</td></tr>
+          <tr><td>Email (SMTP or Microsoft 365 / Google Workspace)</td><td>Customer IT admin + IE</td><td>1–2 hours</td></tr>
+          <tr><td>Document storage (SharePoint, S3, or Google Drive)</td><td>Customer IT admin + IE</td><td>2–3 hours</td></tr>
+          <tr><td>CRM (Salesforce, HubSpot — optional)</td><td>Customer IT admin + IE</td><td>3–5 hours</td></tr>
+          <tr><td>Ticketing (Jira, ServiceNow — optional)</td><td>Customer IT admin + IE</td><td>2–4 hours</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-success"><strong>Milestone 2 — Integrations complete:</strong> All contracted integrations are connected, tested end-to-end, and confirmed by the customer IT admin.</div>
+
+      <h2>Phase 3: Configuration and data migration (Weeks 3–5)</h2>
+
+      <h3>Workflow configuration</h3>
+      <p>CaseForge workflows are configured by the customer's workspace administrator with IE guidance. The configuration session covers:</p>
+      <ol>
+        <li>Case type setup — create case categories matching the customer's process taxonomy</li>
+        <li>Workflow stages — configure stage labels, transition rules, and required fields per stage</li>
+        <li>Role-based access control — assign permissions to CaseForge role groups</li>
+        <li>Custom fields — add customer-specific fields to case forms</li>
+        <li>Notification rules — define which events trigger email notifications and to whom</li>
+      </ol>
+      <p>Allow two hours per workflow for initial configuration, plus testing.</p>
+
+      <h3>Data migration</h3>
+      <p>If migrating from a legacy system, the IE coordinates data migration during weeks 3–5:</p>
+      <ol>
+        <li><strong>Data export</strong> — customer IT exports case data in CSV or JSON; IE provides the field mapping template</li>
+        <li><strong>Mapping and transformation</strong> — IE maps legacy fields to CaseForge fields; customer PM reviews</li>
+        <li><strong>Test migration</strong> — IE loads a 5–10% sample into staging; customer PM reviews for accuracy</li>
+        <li><strong>Full migration</strong> — After sign-off, IE runs the full import during a scheduled maintenance window</li>
+        <li><strong>Verification</strong> — Customer PM spot-checks migrated records; IE confirms record counts match</li>
+      </ol>
+      <div class="callout callout-warning"><strong>Data migration is a customer dependency.</strong> Delays in providing the data export push the migration timeline — and potentially the go-live date — by an equivalent number of days.</div>
+
+      <div class="callout callout-success"><strong>Milestone 3 — Configuration and migration complete:</strong> Core workflows configured, all user roles set up, migrated data verified by the customer PM.</div>
+
+      <h2>Phase 4: Training (Weeks 5–6)</h2>
+      <p>The customer's workspace admin receives four hours of hands-on training with the CaseForge IE. See the <a href="admin-training-guide.html">Admin Training Guide</a> for the full syllabus.</p>
+      <p>End-user training is delivered by the customer's admin (not directly by CaseForge). The IE provides a deck, a user quick-start guide, and a sandbox training environment.</p>
+
+      <h3>UAT pass criteria</h3>
+      <ul>
+        <li>All priority workflows exercise successfully end-to-end by at least two testers</li>
+        <li>No P1 (data loss, security) or P2 (blocking functional issue) defects open at close of UAT</li>
+        <li>All contracted integrations validated in the production tenant</li>
+      </ul>
+      <div class="callout callout-success"><strong>Milestone 4 — Training and UAT complete:</strong> Customer admin training complete; all UAT test cases passed or deferred with agreed resolution dates.</div>
+
+      <h2>Phase 5: Go-live (Week 7)</h2>
+      <p>The go-live phase covers final validation, cutover, and initial production monitoring. See the <a href="go-live-checklist.html">Go-Live Checklist</a> for the step-by-step execution plan.</p>
+      <div class="callout callout-success"><strong>Milestone 5 — Go-live:</strong> Production cutover complete. First production case created. Go-live signed off by customer PM and CaseForge CSM.</div>
+
+      <h2>Phase 6: Hypercare (Weeks 8–12)</h2>
+      <p>Hypercare is a four-week monitored period immediately after go-live. The CaseForge CSM and IE remain on elevated response SLAs:</p>
+      <table>
+        <thead><tr><th>Priority</th><th>Definition</th><th>Hypercare response SLA</th><th>BAU response SLA</th></tr></thead>
+        <tbody>
+          <tr><td>P1</td><td>System down or data loss</td><td>30 minutes</td><td>1 hour</td></tr>
+          <tr><td>P2</td><td>Major feature broken, no workaround</td><td>2 hours</td><td>4 hours</td></tr>
+          <tr><td>P3</td><td>Minor issue, workaround available</td><td>Next business day</td><td>3 business days</td></tr>
+        </tbody>
+      </table>
+      <p>At the end of hypercare, the CSM conducts an exit review covering: issue log review, pending configuration items, training gaps, and handoff to the BAU support model.</p>
+      <div class="callout callout-success"><strong>Milestone 6 — Hypercare complete:</strong> Exit review conducted. All P1 and P2 issues resolved. Customer confirmed ready for BAU support.</div>
+
+    </div>
+  </main>
+</div>
+
+<script src="assets/scripts.js"></script>
+<style>
+.page-meta { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+.lead { font-size: 1.05rem; color: var(--text-sec); max-width: 680px; line-height: 1.7; margin-bottom: 2rem; }
+.checklist { list-style: none; padding: 0; margin: 1rem 0 1.5rem 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.checklist li { padding-left: 1.6rem; position: relative; }
+.checklist li::before { content: "☐"; position: absolute; left: 0; color: var(--primary); font-size: 1rem; }
+</style>
+</body>
+</html>

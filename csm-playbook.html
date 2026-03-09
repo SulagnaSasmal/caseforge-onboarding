@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSM Playbook – CaseForge Onboarding</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <script>
+    (function () {
+      var t = localStorage.getItem('cf-theme') || 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <style>
+    .phase-header {
+      display: flex; align-items: center; gap: 0.6rem;
+      border-bottom: 2px solid var(--accent-light); padding-bottom: 0.4rem;
+    }
+    .phase-badge {
+      display: inline-block; padding: 0.2rem 0.65rem; border-radius: 999px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em;
+      background: var(--accent); color: white;
+    }
+    .email-template {
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 8px 8px 0; padding: 1rem 1.25rem;
+      font-family: monospace; font-size: 0.85rem; white-space: pre-wrap;
+      line-height: 1.6; margin: 1rem 0;
+    }
+    .checklist-item {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      padding: 0.35rem 0; border-bottom: 1px solid var(--border-light, var(--border));
+    }
+    .checklist-item:last-child { border-bottom: none; }
+    .checklist-item input[type="checkbox"] {
+      margin-top: 0.2rem; accent-color: var(--accent); flex-shrink: 0;
+    }
+    .risk-card {
+      background: var(--bg-secondary); border: 1px solid var(--border);
+      border-radius: 8px; padding: 1.1rem 1.25rem; margin-bottom: 1rem;
+    }
+    .risk-card h4 { margin: 0 0 0.5rem; font-size: 0.95rem; }
+    .risk-label {
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      padding: 0.1rem 0.45rem; border-radius: 4px; margin-right: 0.5rem;
+    }
+    .risk-label.symptoms { background: #fff3cd; color: #856404; }
+    .risk-label.impact { background: #f8d7da; color: #842029; }
+    .risk-label.response { background: #d1e7dd; color: #0a3622; }
+    [data-theme="dark"] .risk-label.symptoms { background: #4a3a00; color: #ffc107; }
+    [data-theme="dark"] .risk-label.impact { background: #4a0e11; color: #ea868f; }
+    [data-theme="dark"] .risk-label.response { background: #0a3622; color: #75b798; }
+    .health-green { color: #198754; font-weight: 600; }
+    .health-yellow { color: #856404; font-weight: 600; }
+    .health-red { color: #842029; font-weight: 600; }
+    [data-theme="dark"] .health-green { color: #75b798; }
+    [data-theme="dark"] .health-yellow { color: #ffc107; }
+    [data-theme="dark"] .health-red { color: #ea868f; }
+    .timeline-item {
+      display: flex; gap: 1rem; padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-note {
+      font-size: 0.78rem; color: var(--text-muted);
+      background: var(--bg-secondary); padding: 0.15rem 0.55rem; border-radius: 4px;
+      white-space: nowrap; align-self: flex-start; flex-shrink: 0; margin-top: 0.1rem;
+    }
+    .escalation-badge {
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      padding: 0.15rem 0.5rem; border-radius: 4px;
+      background: #f8d7da; color: #842029;
+    }
+    [data-theme="dark"] .escalation-badge { background: #4a0e11; color: #ea868f; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">CF</span>
+        <span class="logo-text">CaseForge <span class="logo-sub">Onboarding</span></span>
+        <span class="version-badge">v3.x</span>
+      </a>
+      <nav class="header-nav">
+        <a href="implementation-guide.html">Implementation</a>
+        <a href="go-live-checklist.html">Go-Live</a>
+        <a href="admin-training-guide.html">Admin Training</a>
+        <a href="integration-checklist.html">Integrations</a>
+        <a href="csm-playbook.html" class="active">CSM Playbook</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span class="theme-icon">🌙</span>
+        </button>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-layout">
+    <aside class="sidebar" id="sidebar">
+      <nav class="sidebar-nav">
+        <div class="sidebar-section">
+          <div class="sidebar-section-title">30-Day Program</div>
+          <a href="index.html" class="sidebar-link">Overview</a>
+          <a href="implementation-guide.html" class="sidebar-link">Implementation Guide</a>
+          <a href="integration-checklist.html" class="sidebar-link">Integration Checklist</a>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-section-title">Training &amp; Go-Live</div>
+          <a href="admin-training-guide.html" class="sidebar-link">Admin Training Guide</a>
+          <a href="go-live-checklist.html" class="sidebar-link">Go-Live Checklist</a>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-section-title">Success Resources</div>
+          <a href="csm-playbook.html" class="sidebar-link active">CSM Playbook</a>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-section-title">On This Page</div>
+          <a href="#role" class="sidebar-link sidebar-link-sm">Your Role as CSM</a>
+          <a href="#phase1" class="sidebar-link sidebar-link-sm">Phase 1: Pre-Kickoff</a>
+          <a href="#phase2" class="sidebar-link sidebar-link-sm">Phase 2: Implementation</a>
+          <a href="#phase3" class="sidebar-link sidebar-link-sm">Phase 3: Go-Live &amp; Hypercare</a>
+          <a href="#phase4" class="sidebar-link sidebar-link-sm">Phase 4: Steady-State &amp; Renewal</a>
+          <a href="#escalation" class="sidebar-link sidebar-link-sm">Escalation Protocol</a>
+          <a href="#tools" class="sidebar-link sidebar-link-sm">Tools &amp; Resources</a>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="page-meta">
+        <span class="page-meta-tag">Internal — CaseForge CS Team Only</span>
+        <span class="page-meta-tag">Enterprise accounts</span>
+        <span class="page-meta-tag">CaseForge 3.x</span>
+      </div>
+      <h1>CSM Playbook</h1>
+      <p class="lead">This playbook guides the Customer Success Manager through the full post-sale engagement lifecycle — from kickoff through renewal. It covers the CSM's responsibilities at each phase, common customer scenarios with recommended responses, and escalation protocols.</p>
+
+      <div class="callout callout-warning">
+        This document is a reference, not a script. Use your judgment based on individual customer context. If this playbook conflicts with a specific account agreement or SOW, the <strong>SOW takes precedence</strong>.
+      </div>
+
+      <!-- Role -->
+      <section id="role">
+        <h2>Your Role as CSM</h2>
+        <p>The CSM is the customer's primary relationship owner after the sale closes.</p>
+        <table>
+          <thead><tr><th>Responsibility</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Engagement health</strong></td>
+              <td>Hold regular check-ins, surface risks before they become escalations, and ensure the customer is progressing toward their defined success outcomes</td>
+            </tr>
+            <tr>
+              <td><strong>Implementation oversight</strong></td>
+              <td>Own the project timeline, coordinate between the customer PM and the CaseForge IE, and enforce milestone gates</td>
+            </tr>
+            <tr>
+              <td><strong>Adoption</strong></td>
+              <td>Monitor post-go-live usage metrics and proactively engage customers whose adoption is lower than expected</td>
+            </tr>
+            <tr>
+              <td><strong>Renewal</strong></td>
+              <td>Position the renewal conversation at least 90 days before contract end; involve the AE for expansion opportunities</td>
+            </tr>
+            <tr>
+              <td><strong>Voice of customer</strong></td>
+              <td>Document customer feedback and product gaps in the internal feedback system; represent the customer's needs in product planning discussions</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout callout-tip">
+          You are not the technical owner of the implementation (that is the IE) and not the sales owner (that is the AE). Your position is at the intersection: you own the <strong>relationship and the outcome</strong>.
+        </div>
+      </section>
+
+      <!-- Phase 1 -->
+      <section id="phase1">
+        <h2 class="phase-header">
+          <span class="phase-badge">Phase 1</span>
+          Pre-Kickoff
+          <span style="font-size:0.85rem;color:var(--text-muted)">Contract close → Day 7</span>
+        </h2>
+
+        <h3>Your tasks</h3>
+        <div>
+          <label class="checklist-item"><input type="checkbox"> Review the signed order document — confirm contracted modules, user count, integrations, and any custom terms</label>
+          <label class="checklist-item"><input type="checkbox"> Introduce yourself to the customer executive sponsor and PM via email within <strong>24 hours</strong> of contract close</label>
+          <label class="checklist-item"><input type="checkbox"> Schedule the kickoff call within <strong>five business days</strong> of contract close</label>
+          <label class="checklist-item"><input type="checkbox"> Create the project tracker in the CS tool (Gainsight) and populate the implementation timeline</label>
+          <label class="checklist-item"><input type="checkbox"> Assign an IE and confirm their availability for the kickoff date</label>
+          <label class="checklist-item"><input type="checkbox"> Confirm the customer received tenant provisioning credentials (the IE sends these — verify with the IE)</label>
+        </div>
+
+        <h3>Email template: CSM introduction</h3>
+        <div class="email-template">Subject: Welcome to CaseForge — [Customer Name]
+
+Hi [Sponsor name],
+
+I'm [Your name], your Customer Success Manager at CaseForge. I'll be your
+main point of contact through implementation and beyond.
+
+I've scheduled our kickoff call for [date/time] — you should have the
+calendar invite. I'll be joined by [IE name], who leads our technical
+implementation.
+
+In the meantime, [IE name] will reach out to [IT admin name] to begin
+environment access setup.
+
+Looking forward to working with you.
+
+[Signature]</div>
+      </section>
+
+      <!-- Phase 2 -->
+      <section id="phase2">
+        <h2 class="phase-header">
+          <span class="phase-badge">Phase 2</span>
+          Implementation
+          <span style="font-size:0.85rem;color:var(--text-muted)">Kickoff → Go-live</span>
+        </h2>
+
+        <h3>Weekly check-in format</h3>
+        <p>Run a 30-minute weekly check-in with the customer PM every week until hypercare exit. Standard agenda:</p>
+        <table>
+          <thead><tr><th>Segment</th><th>Duration</th><th>What to cover</th></tr></thead>
+          <tbody>
+            <tr><td>Milestone status</td><td>5 min</td><td>Green/yellow/red on each open milestone</td></tr>
+            <tr><td>Blockers</td><td>10 min</td><td>What's preventing progress; who owns resolution; deadline</td></tr>
+            <tr><td>This week's tasks</td><td>10 min</td><td>What the customer team and CF team need to complete before the next call</td></tr>
+            <tr><td>Risks</td><td>5 min</td><td>Anything that could affect go-live date; discuss early</td></tr>
+          </tbody>
+        </table>
+        <p>Take notes in the project tracker during the call. Send a summary within <strong>two hours</strong>. Keep summaries factual — record what was agreed, not context or interpretation.</p>
+
+        <h3>Milestone gate process</h3>
+        <p>Do not allow the team to skip a milestone sign-off even if "it's basically done." Milestone sign-offs are the customer PM's formal confirmation that a phase is complete. They:</p>
+        <ul>
+          <li>Create a clear record of what was delivered and when</li>
+          <li>Give the customer a natural point to raise any issues before moving forward</li>
+          <li>Protect CaseForge from scope creep disputes</li>
+        </ul>
+        <div class="callout callout-tip">
+          If a customer PM is reluctant to sign off ("we trust you, just keep going"), explain that the sign-off protects <em>them</em> — if something is unexpectedly wrong, it's much easier to address at a milestone than after go-live.
+        </div>
+
+        <h3>Common implementation risks</h3>
+        <div class="risk-card">
+          <h4>IT admin unavailable during integration sessions</h4>
+          <p><span class="risk-label symptoms">Symptoms</span> Sessions scheduled but IT admin joins unprepared, lacks credentials, or is pulled to other priorities.</p>
+          <p><span class="risk-label impact">Impact</span> Integration delays that compress the testing window.</p>
+          <p><span class="risk-label response">Response</span> At kickoff, get the IT admin's direct contact. Confirm each session 48 hours in advance with a preparation checklist. If consistently unavailable, escalate to the executive sponsor — frame as a project risk, not a performance issue.</p>
+        </div>
+        <div class="risk-card">
+          <h4>Data migration is larger or messier than scoped</h4>
+          <p><span class="risk-label symptoms">Symptoms</span> Customer provides a data export far larger than estimated, with significant quality issues or non-standard format.</p>
+          <p><span class="risk-label impact">Impact</span> Migration slips, potentially pushing go-live.</p>
+          <p><span class="risk-label response">Response</span> Surface this immediately. Estimate revised migration effort with the IE. If additional work is out of scope, involve the AE for a scope amendment before proceeding. Do not absorb unscoped migration work silently.</p>
+        </div>
+        <div class="risk-card">
+          <h4>UAT reveals significant workflow rework</h4>
+          <p><span class="risk-label symptoms">Symptoms</span> UAT test cases failing due to workflow configuration mismatches with the customer's actual processes.</p>
+          <p><span class="risk-label impact">Impact</span> Rework delays the Phase 4 timeline.</p>
+          <p><span class="risk-label response">Response</span> Assess severity with IE. Minor misconfigurations (field labels, stage names) resolve quickly. Structural redesign (adding/removing stages, changing transition rules) takes longer. Adjust go-live proactively — a rushed go-live produces a poor customer experience.</p>
+        </div>
+      </section>
+
+      <!-- Phase 3 -->
+      <section id="phase3">
+        <h2 class="phase-header">
+          <span class="phase-badge">Phase 3</span>
+          Go-Live &amp; Hypercare
+          <span style="font-size:0.85rem;color:var(--text-muted)">Weeks 7–12</span>
+        </h2>
+
+        <h3>Go-live day responsibilities</h3>
+        <ul>
+          <li>Be available for the <strong>full change window</strong> — not just the kickoff of the cutover activity.</li>
+          <li>Confirm the go-live checklist is being worked in order. Do not let the team skip verification steps.</li>
+          <li>Send the go-live confirmation email to the executive sponsor within one hour of go-live sign-off.</li>
+          <li>Log the go-live date in the CS tool and trigger the hypercare onboarding workflow.</li>
+        </ul>
+
+        <h3>Email template: Go-live confirmation</h3>
+        <div class="email-template">Subject: CaseForge is live — [Customer Name]
+
+Hi [Sponsor name],
+
+Great news — CaseForge went live for [Customer Name] today at [time].
+
+Your team can now access the platform at https://[tenant].caseforge.io.
+
+For the next four weeks, we're in an elevated support period. [IE name]
+is monitoring the system daily and available for same-business-day response
+on any issues. Weekly check-ins with [PM name] continue on [day/time].
+
+Thank you to the [Customer Name] team for a smooth implementation. We're
+looking forward to seeing the impact.
+
+[Signature]</div>
+
+        <h3>Hypercare monitoring schedule</h3>
+        <table>
+          <thead><tr><th>Week</th><th>CSM activity</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Week 8</strong></td><td>Weekly check-in; confirm no P1/P2 issues; review adoption metrics (first-week logins)</td></tr>
+            <tr><td><strong>Week 9</strong></td><td>Review integration health with IE; confirm notification delivery is stable</td></tr>
+            <tr><td><strong>Week 10</strong></td><td>Review usage data — are users creating cases, or is adoption stalling? Proactive outreach if low.</td></tr>
+            <tr><td><strong>Week 11</strong></td><td>Pre-exit review with customer PM — are exit criteria being met?</td></tr>
+            <tr><td><strong>Week 12</strong></td><td>Hypercare exit call; transition to standard support; introduce renewal timeline</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Adoption red flags</h3>
+        <p>If you see any of the following in the first 30 days, act immediately — do not wait for the next check-in:</p>
+        <ul>
+          <li>Fewer than 50% of provisioned users have logged in within two weeks of go-live</li>
+          <li>No cases have been created (or only test cases) after the first week</li>
+          <li>Integration delivering no data (zero syncs)</li>
+          <li>Admin reports receiving calls about the same issue three or more times (indicates a training gap, not a one-off)</li>
+        </ul>
+        <div class="callout callout-tip">
+          <strong>Low adoption response:</strong> Schedule a 30-minute call with the customer PM and admin. Do not draw conclusions without hearing their perspective first — low adoption is sometimes intentional (phased rollout) and sometimes a systemic issue. If systemic, bring in the IE for a configuration review.
+        </div>
+      </section>
+
+      <!-- Phase 4 -->
+      <section id="phase4">
+        <h2 class="phase-header">
+          <span class="phase-badge">Phase 4</span>
+          Steady-State &amp; Renewal
+          <span style="font-size:0.85rem;color:var(--text-muted)">Months 3–12</span>
+        </h2>
+
+        <h3>Quarterly business review (QBR)</h3>
+        <p>Schedule a QBR at months 3, 6, and 9.</p>
+        <table>
+          <thead><tr><th>Agenda item</th><th>Focus</th></tr></thead>
+          <tbody>
+            <tr><td>Usage metrics</td><td>Cases created/closed, average resolution time vs. baseline</td></tr>
+            <tr><td>Value delivered</td><td>Tie metrics to the business outcomes defined at kickoff</td></tr>
+            <tr><td>Open items</td><td>Unresolved configuration questions, deferred integrations, enhancement requests</td></tr>
+            <tr><td>Product roadmap</td><td>Share relevant upcoming features and how they apply to this customer</td></tr>
+            <tr><td>Renewal preview</td><td>At month 9: confirm renewal intent, start expansion conversation if applicable</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Health score signals</h3>
+        <p>Update the health score in the CS tool after each check-in.</p>
+        <table>
+          <thead><tr><th>Signal</th><th>Weight</th><th class="health-green">Green</th><th class="health-yellow">Yellow</th><th class="health-red">Red</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Active users / licensed users</td><td>High</td>
+              <td class="health-green">&gt;70%</td><td class="health-yellow">40–70%</td><td class="health-red">&lt;40%</td>
+            </tr>
+            <tr>
+              <td>Cases created (last 30 days)</td><td>High</td>
+              <td class="health-green">Increasing or stable</td><td class="health-yellow">Declining</td><td class="health-red">Zero</td>
+            </tr>
+            <tr>
+              <td>Open P1/P2 support tickets</td><td>High</td>
+              <td class="health-green">0</td><td class="health-yellow">1–2 with plan</td><td class="health-red">3+ or unresponsive</td>
+            </tr>
+            <tr>
+              <td>Last check-in date</td><td>Medium</td>
+              <td class="health-green">&lt;14 days</td><td class="health-yellow">14–30 days</td><td class="health-red">&gt;30 days</td>
+            </tr>
+            <tr>
+              <td>Renewal engagement (at T-90)</td><td>High</td>
+              <td class="health-green">Signed or verbal confirmation</td><td class="health-yellow">In conversation</td><td class="health-red">No engagement</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout callout-warning">
+          A <strong>Yellow</strong> health score requires a documented action plan in the CS tool. A <strong>Red</strong> health score requires CSM manager review within five business days.
+        </div>
+
+        <h3>Renewal timeline</h3>
+        <div>
+          <div class="timeline-item">
+            <span class="timeline-note">T-90 days</span>
+            <span>Send renewal notification; schedule renewal discussion with economic buyer</span>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-note">T-60 days</span>
+            <span>If no response to renewal outreach, escalate to CSM manager + AE</span>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-note">T-45 days</span>
+            <span>Multi-thread — contact both the sponsor and the PM if the sponsor is unresponsive</span>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-note">T-30 days</span>
+            <span>Renewal document should be signed by this date for a clean renewal</span>
+          </div>
+        </div>
+        <div class="callout callout-tip">
+          If the renewal is at risk due to a product or service issue, <strong>do not escalate the price or commercial discussion until the issue is resolved.</strong> Customers renew based on value delivered, not commercial pressure.
+        </div>
+      </section>
+
+      <!-- Escalation -->
+      <section id="escalation">
+        <h2>Escalation Protocol</h2>
+
+        <h3>Internal escalations (you escalating within CaseForge)</h3>
+        <table>
+          <thead><tr><th>Situation</th><th>Escalate to</th><th>Timeline</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>IE unresponsive to customer for &gt;24 hours</td>
+              <td>IE manager</td>
+              <td><span class="escalation-badge">Immediately</span></td>
+            </tr>
+            <tr>
+              <td>Implementation milestone slipping &gt;5 days with no resolution plan</td>
+              <td>Implementation manager</td>
+              <td>Within 24 hours of identifying the slip</td>
+            </tr>
+            <tr>
+              <td>Customer threatening churn</td>
+              <td>CSM manager + AE</td>
+              <td><span class="escalation-badge">Immediately</span></td>
+            </tr>
+            <tr>
+              <td>Product defect blocking go-live</td>
+              <td>Product + Engineering via priority support ticket</td>
+              <td><span class="escalation-badge">Immediately</span> + alert CSM manager</td>
+            </tr>
+            <tr>
+              <td>Data breach or security incident</td>
+              <td>Security team + CSM manager</td>
+              <td><span class="escalation-badge">Immediately</span> — follow the security incident runbook</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>External escalations (customer escalating to CaseForge)</h3>
+        <p>If a customer escalates beyond you — contacting your manager, the CIO, or submitting a formal complaint:</p>
+        <ol>
+          <li>Thank the customer for raising the concern and confirm you will investigate.</li>
+          <li>Notify your manager within <strong>30 minutes</strong>.</li>
+          <li>Prepare a factual summary: what happened, when, current status, and resolution path.</li>
+          <li>Respond to the customer within <strong>two business hours</strong> with the summary and a defined resolution timeline.</li>
+        </ol>
+        <div class="callout callout-warning">
+          Do not send an apology that admits CaseForge fault without a factual basis. Do not promise outcomes you cannot control.
+        </div>
+      </section>
+
+      <!-- Tools -->
+      <section id="tools">
+        <h2>Tools &amp; Resources</h2>
+        <table>
+          <thead><tr><th>Resource</th><th>Location</th></tr></thead>
+          <tbody>
+            <tr><td>Customer project tracker</td><td>Gainsight → Accounts → [Customer]</td></tr>
+            <tr><td>Implementation document library</td><td>Shared Google Drive (Implementation → [Customer])</td></tr>
+            <tr><td>Health score dashboard</td><td>Gainsight → Reports → CS Health Dashboard</td></tr>
+            <tr><td>Support ticket escalation</td><td>support.caseforge.io → Priority flag → CSM escalation</td></tr>
+            <tr><td>Product roadmap (internal)</td><td>Confluence → Product → Roadmap (current quarter)</td></tr>
+            <tr><td>CaseForge status page</td><td>status.caseforge.io</td></tr>
+            <tr><td>IE assignment and availability</td><td>CS Engineering calendar (Shared Calendar → Implementation)</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/scripts.js"></script>
+</body>
+</html>

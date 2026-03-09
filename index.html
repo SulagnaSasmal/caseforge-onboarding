@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CaseForge Onboarding Kit</title>
+  <meta name="description" content="Post-sale onboarding documentation for enterprise CaseForge AML customers. 30-day program with implementation guide, checklists, and training materials." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="assets/style.css" />
+  <script>
+    (function(){var t=localStorage.getItem('cf-theme');if(t){document.documentElement.setAttribute('data-theme',t);}else if(window.matchMedia('(prefers-color-scheme:dark)').matches){document.documentElement.setAttribute('data-theme','dark');}else{document.documentElement.setAttribute('data-theme','light');}})();
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <button class="hamburger" id="hamburger" aria-label="Open navigation">&#9776;</button>
+  <a class="site-logo" href="index.html">
+    <span class="logo-mark">CF</span>
+    <span class="logo-name">CaseForge <span class="logo-sdk">Onboarding</span></span>
+  </a>
+  <span class="header-version">3.x</span>
+  <div class="header-spacer"></div>
+  <nav class="header-links">
+    <a href="implementation-guide.html">Implementation</a>
+    <a href="integration-checklist.html">Integrations</a>
+    <a href="admin-training-guide.html">Training</a>
+    <a href="go-live-checklist.html">Go-Live</a>
+    <a href="csm-playbook.html">CSM Playbook</a>
+  </nav>
+  <div class="header-sep"></div>
+  <a class="github-btn" href="https://github.com/SulagnaSasmal/caseforge-onboarding" target="_blank" rel="noopener">
+    <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+    GitHub
+  </a>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
+</header>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-group">
+      <div class="nav-group-label">30-Day Program</div>
+      <a href="index.html" class="nav-item active">Overview</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Implementation</div>
+      <a href="implementation-guide.html" class="nav-item">Implementation Guide</a>
+      <a href="integration-checklist.html" class="nav-item">Integration Checklist</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Training</div>
+      <a href="admin-training-guide.html" class="nav-item">Admin Training Guide</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Go-Live</div>
+      <a href="go-live-checklist.html" class="nav-item">Go-Live Checklist</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Customer Success</div>
+      <a href="csm-playbook.html" class="nav-item">CSM Playbook</a>
+    </div>
+  </nav>
+
+  <main class="main">
+    <div class="content">
+
+      <div class="page-header">
+        <div class="page-label">CaseForge 3.x · Enterprise Onboarding</div>
+        <h1 class="page-title">Onboarding Kit</h1>
+        <p class="page-desc">Post-sale onboarding package for enterprise CaseForge AML customers. A 30-day time-boxed program guiding your team from contract signature through go-live and into hypercare.</p>
+      </div>
+
+      <div class="callout callout-tip">
+        <strong>How to use this kit:</strong> Work through the documents in order. Each document corresponds to a phase of the implementation. Your CaseForge CSM will guide you through the program, but this kit is designed so your team can reference it independently at any time.
+      </div>
+
+      <h2>Program overview</h2>
+      <p>The standard CaseForge enterprise onboarding runs seven weeks from kickoff to go-live, followed by a four-week hypercare period. The table below maps each document to the relevant phase.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Document</th>
+            <th>Phase</th>
+            <th>Weeks</th>
+            <th>Owner</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="implementation-guide.html">Implementation Guide</a></td>
+            <td>All phases — master reference</td>
+            <td>1–12</td>
+            <td>CaseForge CSM</td>
+          </tr>
+          <tr>
+            <td><a href="integration-checklist.html">Integration Checklist</a></td>
+            <td>Phase 2: SSO &amp; integrations</td>
+            <td>3–4</td>
+            <td>CaseForge IE + Customer IT</td>
+          </tr>
+          <tr>
+            <td><a href="admin-training-guide.html">Admin Training Guide</a></td>
+            <td>Phase 4: Training</td>
+            <td>5–6</td>
+            <td>CaseForge IE</td>
+          </tr>
+          <tr>
+            <td><a href="go-live-checklist.html">Go-Live Checklist</a></td>
+            <td>Phase 5: Go-live</td>
+            <td>7</td>
+            <td>CaseForge CSM + Customer PM</td>
+          </tr>
+          <tr>
+            <td><a href="csm-playbook.html">CSM Playbook</a></td>
+            <td>Full lifecycle (internal)</td>
+            <td>1–52+</td>
+            <td>CaseForge CSM</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Milestone summary</h2>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">M1</div>
+          <div class="step-body">
+            <strong>Environment ready</strong> — Weeks 1–2<br>
+            <span class="text-muted">Tenant provisioned. Customer admin can log in and email notifications are delivering.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">M2</div>
+          <div class="step-body">
+            <strong>Integrations complete</strong> — Weeks 3–4<br>
+            <span class="text-muted">All contracted integrations connected, tested end-to-end, and confirmed by the customer IT admin.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">M3</div>
+          <div class="step-body">
+            <strong>Configuration and migration complete</strong> — Weeks 3–5<br>
+            <span class="text-muted">Core workflows configured, user roles set up, migrated data verified.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">M4</div>
+          <div class="step-body">
+            <strong>Training and UAT complete</strong> — Weeks 5–6<br>
+            <span class="text-muted">Admin training complete. All UAT test cases passed or deferred with agreed resolution dates.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">M5</div>
+          <div class="step-body">
+            <strong>Go-live</strong> — Week 7<br>
+            <span class="text-muted">Production cutover complete. First production case created. Go-live signed off by customer PM and CaseForge CSM.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">M6</div>
+          <div class="step-body">
+            <strong>Hypercare complete</strong> — Weeks 8–12<br>
+            <span class="text-muted">Four-week monitored period. Issues resolved. Handoff to Business As Usual support.</span>
+          </div>
+        </div>
+      </div>
+
+      <h2>Roles and responsibilities</h2>
+      <table>
+        <thead>
+          <tr><th>Role</th><th>Responsibilities</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>CaseForge CSM</strong></td>
+            <td>Overall engagement ownership, stakeholder communication, escalation point</td>
+          </tr>
+          <tr>
+            <td><strong>CaseForge Implementation Engineer (IE)</strong></td>
+            <td>Technical configuration, integration setup, environment validation</td>
+          </tr>
+          <tr>
+            <td><strong>Customer Project Manager</strong></td>
+            <td>Internal coordination, scheduling, change management, milestone sign-off</td>
+          </tr>
+          <tr>
+            <td><strong>Customer IT Administrator</strong></td>
+            <td>SSO configuration, network access, integration endpoints, directory services</td>
+          </tr>
+          <tr>
+            <td><strong>Customer Workspace Administrator</strong></td>
+            <td>User provisioning, workflow configuration, report setup</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Start here</h2>
+      <p>If you are new to this onboarding kit, start with the <a href="implementation-guide.html">Implementation Guide</a>. It covers the full seven-week program and references the other documents at the right point in the process.</p>
+
+    </div>
+  </main>
+</div>
+
+<script src="assets/scripts.js"></script>
+<style>
+.page-header { margin-bottom: 2rem; }
+.page-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.5rem; font-weight: 600; }
+.page-title { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+.page-desc { font-size: 1.05rem; color: var(--text-sec); max-width: 680px; line-height: 1.7; }
+.steps { display: flex; flex-direction: column; gap: 0; margin: 1.5rem 0; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.step { display: flex; gap: 1rem; padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); background: var(--surface); }
+.step:last-child { border-bottom: none; }
+.step-num { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: var(--primary-bg); color: var(--primary); padding: 0.25rem 0.55rem; border-radius: 5px; white-space: nowrap; align-self: flex-start; margin-top: 2px; }
+.text-muted { color: var(--text-sec); font-size: 0.9rem; }
+</style>
+</body>
+</html>

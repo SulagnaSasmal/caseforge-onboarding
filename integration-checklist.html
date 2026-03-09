@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Integration Checklist — CaseForge Onboarding</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="assets/style.css" />
+  <script>
+    (function(){var t=localStorage.getItem('cf-theme');if(t){document.documentElement.setAttribute('data-theme',t);}else if(window.matchMedia('(prefers-color-scheme:dark)').matches){document.documentElement.setAttribute('data-theme','dark');}else{document.documentElement.setAttribute('data-theme','light');}})();
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <button class="hamburger" id="hamburger" aria-label="Open navigation">&#9776;</button>
+  <a class="site-logo" href="index.html">
+    <span class="logo-mark">CF</span>
+    <span class="logo-name">CaseForge <span class="logo-sdk">Onboarding</span></span>
+  </a>
+  <span class="header-version">3.x</span>
+  <div class="header-spacer"></div>
+  <nav class="header-links">
+    <a href="implementation-guide.html">Implementation</a>
+    <a href="integration-checklist.html" class="active">Integrations</a>
+    <a href="admin-training-guide.html">Training</a>
+    <a href="go-live-checklist.html">Go-Live</a>
+    <a href="csm-playbook.html">CSM Playbook</a>
+  </nav>
+  <div class="header-sep"></div>
+  <a class="github-btn" href="https://github.com/SulagnaSasmal/caseforge-onboarding" target="_blank" rel="noopener">
+    <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+    GitHub
+  </a>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
+</header>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-group">
+      <div class="nav-group-label">30-Day Program</div>
+      <a href="index.html" class="nav-item">Overview</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Implementation</div>
+      <a href="implementation-guide.html" class="nav-item">Implementation Guide</a>
+      <a href="integration-checklist.html" class="nav-item active">Integration Checklist</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Training</div>
+      <a href="admin-training-guide.html" class="nav-item">Admin Training Guide</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Go-Live</div>
+      <a href="go-live-checklist.html" class="nav-item">Go-Live Checklist</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Customer Success</div>
+      <a href="csm-playbook.html" class="nav-item">CSM Playbook</a>
+    </div>
+  </nav>
+
+  <main class="main">
+    <div class="content">
+
+      <div class="page-meta">Applies to: CaseForge 3.x · Owner: CaseForge Implementation Engineer · Last reviewed: March 2025</div>
+      <h1>Integration Checklist</h1>
+      <p class="lead">Use this checklist during Phase 2 of the implementation (weeks 3–4). Work through each section with the customer IT administrator. Mark items complete only after end-to-end testing.</p>
+
+      <div class="callout callout-tip">
+        <strong>How to use this checklist:</strong> Complete sections in order. Log blockers in the shared project tracker immediately. Items marked <span class="badge-req">Required</span> must be complete before go-live. Items marked <span class="badge-cond">Conditional</span> apply only if that integration is in scope.
+      </div>
+
+      <h2>1. Network and access prerequisites</h2>
+      <ul class="checklist">
+        <li><span class="badge-req">Required</span> CaseForge tenant URL is accessible from the customer network (no proxy or firewall blocking outbound HTTPS)</li>
+        <li><span class="badge-req">Required</span> CaseForge IP ranges added to customer allowlist (if egress filtering is in use)
+          <div class="sub-note">CaseForge IP ranges: <code>34.120.0.0/16</code>, <code>34.149.0.0/16</code>. Confirm with the IE that these are current — ranges may change with 30-day notice.</div>
+        </li>
+        <li><span class="badge-req">Required</span> Customer admin account activated and password changed from temporary credential</li>
+        <li><span class="badge-cond">Conditional</span> Dedicated service account created in customer directory (required for LDAP sync or on-premises document storage)</li>
+        <li><span class="badge-cond">Conditional</span> Outbound webhook endpoint accessible from CaseForge (required if customer will receive webhook events)</li>
+      </ul>
+
+      <h2>2. Single sign-on</h2>
+      <div class="callout callout-warning">Complete the SSO section before configuring user sync. SSO must be working before you can verify that synced users can log in.</div>
+
+      <h3>2.1 SAML 2.0</h3>
+      <ul class="checklist">
+        <li>CaseForge Service Provider metadata XML provided to customer IT admin</li>
+        <li>SAML application created in the customer IdP (Okta, Azure AD, ADFS, or other)</li>
+        <li>IdP metadata XML or metadata URL provided to CaseForge IE</li>
+        <li>Attribute mappings confirmed:
+          <table style="margin-top:0.75rem">
+            <thead><tr><th>CaseForge field</th><th>Mapped to IdP attribute</th></tr></thead>
+            <tbody>
+              <tr><td>Email</td><td></td></tr>
+              <tr><td>First name</td><td></td></tr>
+              <tr><td>Last name</td><td></td></tr>
+              <tr><td>Groups</td><td></td></tr>
+            </tbody>
+          </table>
+        </li>
+        <li>SSO login tested with at least one pilot user — login completes without error</li>
+        <li>SSO login tested with a user who is <strong>not</strong> assigned the CaseForge application — access denied as expected</li>
+        <li>SSO enabled for the production tenant</li>
+      </ul>
+
+      <h3>2.2 OIDC</h3>
+      <ul class="checklist">
+        <li>Redirect URI provided to customer IT admin: <code>https://[tenant].caseforge.io/auth/callback</code></li>
+        <li>OIDC application created in the customer IdP; discovery endpoint URL provided to CaseForge IE</li>
+        <li>Client ID and client secret configured in CaseForge tenant settings</li>
+        <li>OIDC login tested with a pilot user — login completes without error</li>
+        <li>Token expiry and refresh behavior confirmed (default: 60-minute session, 24-hour refresh token)</li>
+      </ul>
+
+      <h3>2.3 Post-SSO verification</h3>
+      <ul class="checklist">
+        <li>User can reach the CaseForge tenant via SSO without entering a separate CaseForge password</li>
+        <li>SSO-provisioned user appears in the CaseForge admin user list with correct name and email</li>
+        <li>Deprovisioning tested: user removed from IdP application; CaseForge session terminates and re-login denied</li>
+      </ul>
+
+      <h2>3. User directory sync</h2>
+      <ul class="checklist">
+        <li><span class="badge-cond">Conditional</span> Active Directory or LDAP sync configured (required for on-premises AD)
+          <ul style="margin-top:0.5rem; list-style:disc; padding-left:1.25rem; display:flex; flex-direction:column; gap:0.3rem;">
+            <li>LDAP server hostname and port provided to CaseForge IE</li>
+            <li>Service account DN and password configured in CaseForge</li>
+            <li>Sync filter confirmed (which OUs or groups to sync)</li>
+            <li>Initial sync completed — user count in CaseForge matches expected count</li>
+            <li>Incremental sync verified</li>
+          </ul>
+        </li>
+        <li><span class="badge-cond">Conditional</span> SCIM provisioning configured (for Okta, Azure AD, or SCIM-capable IdP)
+          <ul style="margin-top:0.5rem; list-style:disc; padding-left:1.25rem; display:flex; flex-direction:column; gap:0.3rem;">
+            <li>SCIM endpoint URL and bearer token provided to customer IT admin</li>
+            <li>SCIM application configured in the IdP</li>
+            <li>Test user pushed via SCIM — appears in CaseForge with correct attributes</li>
+            <li>Test deprovision — user deactivated in IdP; CaseForge account deactivated within one sync cycle</li>
+          </ul>
+        </li>
+        <li>Group-to-role mapping confirmed:
+          <table style="margin-top:0.75rem">
+            <thead><tr><th>IdP group</th><th>CaseForge role</th></tr></thead>
+            <tbody><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody>
+          </table>
+        </li>
+      </ul>
+
+      <h2>4. Email</h2>
+      <ul class="checklist">
+        <li><span class="badge-req">Required</span> Outbound email method selected: CaseForge-managed relay (default) or customer SMTP<br>
+          <div class="sub-note">If using customer SMTP: SMTP hostname, port, and auth credentials provided to IE; credentials entered in CaseForge tenant settings; test email sent and delivered.</div>
+        </li>
+        <li><span class="badge-req">Required</span> Notification sender address confirmed</li>
+        <li><span class="badge-req">Required</span> SPF and DKIM records added to the customer's DNS (IE provides the required record values)</li>
+        <li>Test notification email delivered to at least three different recipient email addresses, including one on a different domain</li>
+        <li>Notification emails not landing in spam</li>
+      </ul>
+
+      <h2>5. Document storage</h2>
+      <h3>5.1 CaseForge-managed storage (default)</h3>
+      <ul class="checklist">
+        <li>Customer confirmed that CaseForge-managed storage (S3-backed, encrypted at rest) is acceptable</li>
+        <li>Data residency region confirmed and configured (US-East, EU-West, or APAC)</li>
+        <li>Storage quota reviewed and appropriate plan confirmed</li>
+      </ul>
+
+      <h3>5.2 Customer-provided storage</h3>
+      <ul class="checklist">
+        <li><span class="badge-cond">Conditional</span> SharePoint Online: site URL confirmed; Azure app registration granted <code>Files.ReadWrite.All</code>; OAuth consent completed; test upload and retrieval confirmed</li>
+        <li><span class="badge-cond">Conditional</span> Amazon S3: bucket name and region provided; IAM policy applied with <code>s3:GetObject</code>, <code>s3:PutObject</code>, <code>s3:DeleteObject</code>; bucket encryption confirmed; test upload and retrieval confirmed</li>
+        <li><span class="badge-cond">Conditional</span> Google Drive: Shared Drive ID provided; CaseForge service account granted Contributor access; test upload and retrieval confirmed</li>
+      </ul>
+
+      <h2>6. CRM integration (conditional)</h2>
+      <h3>6.1 Salesforce</h3>
+      <ul class="checklist">
+        <li>Salesforce org type confirmed: Production or Sandbox</li>
+        <li>Connected app created with <code>api</code>, <code>refresh_token</code>, <code>offline_access</code> OAuth scopes</li>
+        <li>Consumer key and secret provided to CaseForge IE</li>
+        <li>OAuth flow completed; CaseForge can query Salesforce contacts and accounts</li>
+        <li>Field mapping confirmed; test case created and linked Salesforce contact displays correctly</li>
+      </ul>
+      <h3>6.2 HubSpot</h3>
+      <ul class="checklist">
+        <li>HubSpot portal ID confirmed</li>
+        <li>Private app token created with <code>crm.contacts.read</code> and <code>crm.companies.read</code> scopes</li>
+        <li>Token provided to CaseForge IE and configured in tenant settings</li>
+        <li>Test case created; linked HubSpot contact displays correctly</li>
+      </ul>
+
+      <h2>7. Ticketing integration (conditional)</h2>
+      <h3>7.1 Jira</h3>
+      <ul class="checklist">
+        <li>Jira instance URL confirmed (Cloud or Server/Data Center)</li>
+        <li>API token generated; provided to CaseForge IE</li>
+        <li>CaseForge connection tested: can read Jira project list</li>
+        <li>Default Jira project confirmed; field mapping confirmed</li>
+        <li>Test ticket created from a CaseForge case — appears in Jira with correct field values</li>
+        <li>Jira status change syncs back to CaseForge case timeline</li>
+      </ul>
+      <h3>7.2 ServiceNow</h3>
+      <ul class="checklist">
+        <li>ServiceNow instance URL confirmed</li>
+        <li>Integration user account created with <code>itil</code> role; credentials provided to CaseForge IE</li>
+        <li>Test incident created from CaseForge — appears in ServiceNow</li>
+        <li>Incident resolution in ServiceNow triggers status update in CaseForge</li>
+      </ul>
+
+      <h2>8. Webhooks (conditional)</h2>
+      <ul class="checklist">
+        <li>Webhook endpoint URL provided by the customer (HTTPS required)</li>
+        <li>Endpoint returns HTTP 200 within 10 seconds</li>
+        <li>Webhook secret configured; customer confirms payload signature validation is implemented</li>
+        <li>Test event triggered; customer confirms payload received and signature verified</li>
+        <li>Event subscriptions confirmed: <code>case.created</code> · <code>case.status_changed</code> · <code>case.assigned</code> · <code>case.closed</code> · <code>case.document_uploaded</code></li>
+      </ul>
+
+      <h2>Sign-off</h2>
+      <p>Before proceeding to Phase 3, both parties must confirm that all Required items are complete and all in-scope Conditional items are complete or have an agreed resolution date.</p>
+      <table>
+        <thead><tr><th>Section</th><th>Status</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Network and access prerequisites</td><td></td><td></td></tr>
+          <tr><td>SSO</td><td></td><td></td></tr>
+          <tr><td>User directory sync</td><td></td><td></td></tr>
+          <tr><td>Email</td><td></td><td></td></tr>
+          <tr><td>Document storage</td><td></td><td></td></tr>
+          <tr><td>CRM integration (if applicable)</td><td></td><td></td></tr>
+          <tr><td>Ticketing integration (if applicable)</td><td></td><td></td></tr>
+          <tr><td>Webhooks (if applicable)</td><td></td><td></td></tr>
+        </tbody>
+      </table>
+      <div class="signoff-block">
+        <div class="signoff-row"><span>Customer IT admin:</span> <span class="signoff-line"></span> <span>Date:</span> <span class="signoff-short"></span></div>
+        <div class="signoff-row"><span>CaseForge IE:</span> <span class="signoff-line"></span> <span>Date:</span> <span class="signoff-short"></span></div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="assets/scripts.js"></script>
+<style>
+.page-meta { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+.lead { font-size: 1.05rem; color: var(--text-sec); max-width: 680px; line-height: 1.7; margin-bottom: 2rem; }
+.checklist { list-style: none; padding: 0; margin: 1rem 0 1.5rem 0; display: flex; flex-direction: column; gap: 0.6rem; }
+.checklist li { padding-left: 1.6rem; position: relative; }
+.checklist li::before { content: "☐"; position: absolute; left: 0; color: var(--primary); font-size: 1rem; }
+.sub-note { font-size: 0.85rem; color: var(--text-sec); margin-top: 0.3rem; margin-left: 0; }
+.badge-req { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: var(--danger-bg); color: var(--danger); border: 1px solid var(--danger-border); padding: 1px 6px; border-radius: 4px; margin-right: 4px; }
+.badge-cond { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: var(--warning-bg); color: var(--warning); border: 1px solid var(--warning-border); padding: 1px 6px; border-radius: 4px; margin-right: 4px; }
+.signoff-block { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.5rem 0; display: flex; flex-direction: column; gap: 1rem; }
+.signoff-row { display: flex; align-items: center; gap: 0.75rem; font-size: 0.9rem; }
+.signoff-line { flex: 1; border-bottom: 1px solid var(--border-mid); }
+.signoff-short { width: 100px; border-bottom: 1px solid var(--border-mid); }
+</style>
+</body>
+</html>

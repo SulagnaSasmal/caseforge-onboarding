@@ -53,3 +53,29 @@ This kit applies to **CaseForge v3.x** (released Q1 2025). If your customer is o
 ---
 
 *Maintained by the CaseForge Customer Success team. Last reviewed: March 2025.*
+
+## Dark / Light Mode
+
+All pages support dark and light themes via a toggle button in the header. The selected theme persists in `localStorage` and system `prefers-color-scheme` is honoured on first visit.
+
+## Status
+
+**Phase 3 — Complete / Active Customer Deployment**
+
+| Document | Status |
+|----------|--------|
+| Implementation Guide | Complete |
+| Integration Checklist | Complete |
+| Admin Training Guide | Complete |
+| Go-Live Checklist | Complete |
+| CSM Playbook | Complete |
+| Dark / light theme support | Complete |
+
+This kit targets **CaseForge v3.x** (released Q1 2025). Individual customer deployments will have their own open checklist items.
+
+## Future Enhancements
+
+- v4.x migration addendum (when CaseForge releases a major version)
+- SCIM provisioning integration checklist
+- Embedded API integration guide for customer developer teams
+- Video walkthrough companion for admin training module

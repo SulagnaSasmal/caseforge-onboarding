@@ -647,9 +647,7 @@ footer {
 }
 footer .copyright {
   width: 100%;
-  border-top: 1px solid var(--border);
-  padding-top: 0.5rem;
-  margin-top: 0.25rem;
+  padding-top: 0.25rem;
   font-style: italic;
   color: var(--text-muted);
 }

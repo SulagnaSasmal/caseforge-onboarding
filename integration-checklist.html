@@ -247,7 +247,7 @@
 
 <footer>
   <span>CaseForge Onboarding Kit &middot; v3.x</span>
-  <span class="copyright">&copy; 2026 Sulagna Sasmal. All rights reserved. Personal portfolio project for demonstration purposes only. Not affiliated with any organisation.</span>
+  <span class="copyright">&copy; <span id="footer-yr"></span> Sulagna Sasmal. All rights reserved. Personal portfolio project for demonstration purposes only. Not affiliated with any organization.</span>
 </footer>
 <script src="assets/scripts.js"></script>
 <style>
@@ -265,5 +265,7 @@ h1 { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom
 .signoff-line { flex: 1; border-bottom: 1px solid var(--border-mid); }
 .signoff-short { width: 100px; border-bottom: 1px solid var(--border-mid); }
 </style>
+
+<script>var e=document.getElementById("footer-yr");if(e)e.textContent=new Date().getFullYear();</script>
 </body>
 </html>

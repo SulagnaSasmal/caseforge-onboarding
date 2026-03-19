@@ -56,7 +56,7 @@ This kit applies to **CaseForge v3.x** (released Q1 2025). If your customer is o
 
 ## Dark / Light Mode
 
-All pages support dark and light themes via a toggle button in the header. The selected theme persists in `localStorage` and system `prefers-color-scheme` is honoured on first visit.
+All pages support dark and light themes via a toggle button in the header. The selected theme persists in `localStorage` and system `prefers-color-scheme` is honored on first visit.
 
 ## Status
 
